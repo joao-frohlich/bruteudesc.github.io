@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Upsolving Codeforces Round 481 - BRUTE - Competitive Programming</title>
+    <meta name="description" content="Resolvendo probleminhas">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:image" content="">
+    <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico"
+        type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72"
+        href="/assets/img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="/assets/img/favicon/apple-touch-icon-114x114.png">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#2d2a2a">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#2d2a2a">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2d2a2a">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-container">
+        <div class="sidebar-logo">
+            <img class="logo" src=/assets/img/brute.png alt="BRUTE">
+        </div>
+
+        <menu class="sidebar-menu">
+            <li class="menu-items"><a class="menu-links" href="/">Home</a></li>
+            <li class="menu-items"><a class="menu-links" href="/about/">Sobre</a></li>
+            <li class="menu-items"><a class="menu-links" href="/contact/">Contato</a></li>
+        </menu>
+
+        <div class="sidebar-social">
+            <li class="social-items"><a href="https://www.facebook.com/MaratonaUdesc" class="social-links"><i
+                        class="social-icons fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li class="social-items"><a href="https://github.com/bruteudesc" class="social-links"><i
+                        class="social-icons fa fa-github" aria-hidden="true"></i></a></li>
+            <li class="social-items"><a href="https://www.instagram.com/bruteudesc" class="social-links"><i
+                        class="social-icons fa fa-instagram" aria-hidden="true"></i></a></li>
+        </div>
+
+    </div>
+</aside>
+
+  <main role="main">
+    <div class="content">
+      <article class="page-article">
+  <div class="wrap-content">
+    <header class="page-header">
+      <h1 class="page-title">Upsolving Codeforces Round 481</h1>
+      <div class="page-date"><span>21 February 2020&nbsp;&nbsp;&nbsp;</span></div>
+    </header>
+    <div class="page-content">
+      
+      <img class="page-img" src=/assets/img/cf.png alt="Upsolving Codeforces Round 481 ">
+      
+      <h1 id="upsolving-codeforces-round-481">Upsolving Codeforces Round 481</h1>
+
+<p>Após não terminar o post sobre o Upsolving da Regional 2019, decidi vim aqui agora fazer um upsolving completo, dessa vez de um contest que rolou no <a href="https://www.codeforces.com">Codeforces</a>.</p>
+
+<p>Eu, <a href="https://codeforces.com/profile/joaovitor01" style="color: green">joaovitor01</a> (assim que puder eu mudo esse handle), simulei esse <a href="https://codeforces.com/contest/978">contest div3</a> e, superando minhas expectativas, quase resolvi todos os problemas durante as 2 horas e meia que me eram disponibilizadas, sendo que o último problema eu fui submeter 5 minutos depois. Minha conclusão com isso não é que o contest era fácil, mas era mais o meu estilo, já que o outro div3 que eu terminei de resolver eu levei aproximadamente uma semana, e tive algumas (muitas) complicações.</p>
+
+<p>Acho que quase valeria a pena comentar sobre o codeforces aqui, mas vou deixar isso para uma postagem mais adiante, onde vou falar de alguns judges interessantes para treinar a programação competitiva.</p>
+
+<p>Vale lembrar que eu recomendo tentar realizar o contest antes de conferir esse upsolving, caso você nunca tenha visto esse contest antes e, caso você fique preso em algum problema, pode dar uma conferida aqui, naquele mesmo esquema de ver primeiro a solução escrita e se isso não for suficiente olhar o código para conseguir alguma base.</p>
+
+<p>Sem mais enrolação, bora pro upsolving.</p>
+
+<h2 id="problema-a">Problema A</h2>
+
+<p>Nesse problema recebemos um vetor <script type="math/tex">a</script> com <script type="math/tex">n</script> elementos e nos é pedido para removermos os elementos duplicados, deixando apenas a ocorrência mais à direita do elemento.</p>
+
+<p>Limites do problema:</p>
+<ul>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">n</script> <script type="math/tex">\leq 50</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">a_i</script> <script type="math/tex">\leq 1000</script></li>
+</ul>
+
+<h3 id="solução">Solução</h3>
+
+<p>Perceba que os limites do problema são pequenos, logo existem muitas abordagens capazes de resolver o problema. Uma das possíveis abordagens é a seguinte.</p>
+
+<p>Como queremos o elemento mais a direita, percorremos o vetor <script type="math/tex">a</script> da direita para a esquerda processando os elementos da seguinte forma:</p>
+
+<ul>
+  <li>Caso o elemento não esteja marcado:
+    <ul>
+      <li>Inserimos o elemento em um outro vetor <script type="math/tex">b</script>;</li>
+      <li>Marcamos o elemento.</li>
+    </ul>
+  </li>
+  <li>Caso o elemento esteja marcado:
+    <ul>
+      <li>Ignoramos o elemento.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Após processar todos os elementos, teremos como resposta <script type="math/tex">\mid b \mid</script> e o vetor <script type="math/tex">b</script>.</p>
+
+<h3 id="solução-em-c">Solução em C++</h3>
+
+<details>
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">bool</span><span class="o">&gt;</span> <span class="n">vis</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">v</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">nv</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]]){</span>
+            <span class="n">nv</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="n">vis</span><span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">nv</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">nv</span><span class="p">[</span><span class="n">nv</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">nv</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">nv</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-b">Problema B</h2>
+
+<p>O problema consiste em: dado uma string <script type="math/tex">s</script> de tamanho <script type="math/tex">n</script>, verificar quantas letras devem ser removidas tal que não exista a substring “xxx” em <script type="math/tex">s</script>, tal que o número de remoções seja mínimo.</p>
+
+<p>Limites do problema:</p>
+<ul>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">n</script> <script type="math/tex">\leq 100</script></li>
+</ul>
+
+<h3 id="solução-1">Solução</h3>
+
+<p>Nesse problema só nos interessam as substrings de <script type="math/tex">s</script> que contenham apenas o caracter ‘x’. Portanto, basta percorrer <script type="math/tex">s</script> buscando as substrings interessantes.</p>
+
+<p>Perceba também que devemos remover caracters de substrings <script type="math/tex">aux</script> tal que <script type="math/tex">\mid aux</script><script type="math/tex">\mid \geq 3</script>, de tal forma que <script type="math/tex">\mid aux</script><script type="math/tex">\mid</script> passe a ser <script type="math/tex">= 2</script>.</p>
+
+<p>Assim, para cada substring <script type="math/tex">aux</script>, com <script type="math/tex">\mid aux</script><script type="math/tex">\mid \geq 3</script>, o resultado deverá ser incrementado em <script type="math/tex">\mid aux\mid - 2</script>.</p>
+
+<h3 id="solução-em-c-1">Solução em C++</h3>
+
+<details>
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">s</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rm</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="sc">'x'</span><span class="p">)</span> <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+                <span class="n">rm</span> <span class="o">+=</span> <span class="n">cnt</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+            <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">rm</span> <span class="o">+=</span> <span class="n">cnt</span><span class="o">-</span><span class="mi">2</span><span class="p">;</span>
+    <span class="n">cnt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">rm</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-c">Problema C</h2>
+
+<p>Nesse problema, existem <script type="math/tex">n</script> dormitórios, numerados de <script type="math/tex">1</script> a <script type="math/tex">n</script>, tal que em cada dormitório <script type="math/tex">i</script> existem <script type="math/tex">a_i</script> quartos, numerados de <script type="math/tex">1</script> a <script type="math/tex">a_i</script>. Um carteiro precisa entregar cartas a esses quartos, onde cada carta está numerada de <script type="math/tex">1</script> a <script type="math/tex">a_1 + a_2 + ... + a_n</script>, onde os quartos do primeiro dormitório vêm primeiro, depois os quartos do segundo dormitório e assim por diante.</p>
+
+<p>O problema é: dado um conjunto de <script type="math/tex">m</script> cartas, definir o dormitório e o quarto onde cada carta deve ser entregue.</p>
+
+<p>Limites do problema:</p>
+<ul>
+  <li><script type="math/tex">1 \leq n</script>,<script type="math/tex">m \leq 2 \cdot 10^5</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">a_i</script> <script type="math/tex">\leq 10^{10}</script></li>
+  <li><script type="math/tex">1 \leq b_j\leq</script> <script type="math/tex">\sum_{i=1}^{n} a_i</script> <script type="math/tex">\mid</script> <script type="math/tex">b</script> é dado em ordem crescente</li>
+</ul>
+
+<h3 id="solução-2">Solução</h3>
+
+<p>A primeira coisa a se perceber aqui são os limites do problema. O número de dormitórios e carta é relativamente, logo uma solução linear para cada carta não solucionará o problema no tempo proposto, sendo necessário uma solução em <script type="math/tex">\Theta(log</script> <script type="math/tex">n)</script> ou <script type="math/tex">\Theta(1)</script>. Outro limite para ter atenção é o valor de <script type="math/tex">b_i</script>, que pode chegar a <script type="math/tex">10^{11}</script>, o suficiente para gerar overflow em alguns tipos de variáveis, como o <script type="math/tex">int</script> em C.</p>
+
+<p>A solução que vou apresentar executa em <script type="math/tex">\Theta(n+m)</script> e passa “tranquilamente” no tempo. Aproveitando o fato que as cartas já estão ordenadas, vamos processar cada uma da seguinte forma:</p>
+
+<p>Os dormitórios percorridos pela carta anterior não precisam ser percorridos de novo, assim, partindo do dormitório atual, basta encontrar o dormitório <script type="math/tex">x</script> tal que <script type="math/tex">(\sum_{i=1}^{x-1} a_i)+1</script> <script type="math/tex">\leq</script> <script type="math/tex">b_j \leq sum_{i=1}^{x} a_i</script>, e o quarto <script type="math/tex">y = (\sum_{i=1}^{x} a_i) - b_j</script>.</p>
+
+<p>Como são muitas entradas e saídas, recomendo o uso de fast I/O.</p>
+
+<h3 id="solução-em-c-2">Solução em C++</h3>
+
+<details>
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">a</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">x</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%lld"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+        <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%lld"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">a</span><span class="p">[</span><span class="n">d</span><span class="p">])</span> <span class="n">d</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%lld %lld</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">d</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-d">Problema D</h2>
+
+<p>Dada uma sequência <script type="math/tex">b</script> de números inteiros, onde cada elemento <script type="math/tex">b</script> pode:</p>
+<ul>
+  <li>Ser incrementado em 1;</li>
+  <li>Ter seu valor mantido;</li>
+  <li>Ser diminuido em 1.</li>
+</ul>
+
+<p>O problema consiste em encontrar o menor número de modificações na sequência <script type="math/tex">b</script> para que essa seja uma progressão aritmética, sendo que podemos realizar aquela operação acima apenas uma vez por elemento.</p>
+
+<p>Obs.: uma sequência <script type="math/tex">a[a_1,a_2,...,a_n]</script> é chamada aritmética se e somente se <script type="math/tex">\forall i \mid 1\leq i\leq n, a_{i+1}-a_i = r</script>.</p>
+
+<p>Limites do problema:</p>
+<ul>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">n</script> <script type="math/tex">\leq 10^5</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">b_i</script> <script type="math/tex">\leq 10^9</script></li>
+</ul>
+
+<h3 id="solução-3">Solução</h3>
+
+<p>O problema parece ser difícil de ser resolvido em um tempo aceitável, porém é preciso destacar uma característica desse problema: o fato de estarmos lidando com uma sequência aritmética.</p>
+
+<p>Perceba que não será necessário testar todas as possíveis combinações da sequência <script type="math/tex">b</script>, já que o valor <script type="math/tex">r</script> será definido assim que processarmos os dois primeiros números da sequência. Todos os outros valores de <script type="math/tex">b</script> devem respeitar o valor <script type="math/tex">r</script> que está sendo testado.</p>
+
+<p>Assim, podemos fazer uma combinação simples entre os dois primeiros números, testando todas as modificações possíveis nesses números, resultando em 9 sequências para testarmos se essas sequências podem ser aritméticas realizando, caso necessário, as modificações nos elementos.</p>
+
+<p>Supondo então um valor <script type="math/tex">r = b_1 - b_0</script>, devemos testar <script type="math/tex">\forall a_i \mid 2 \leq i \leq  n-1</script> se, aplicando as modificações, podemos ter <script type="math/tex">b_i - b_{i-1} = r</script>. Caso positivo, testamos o número seguinte, caso contrário, essa sequência é inválida.</p>
+
+<h3 id="solução-em-c-3">Solução em C++</h3>
+
+<details>
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="kt">bool</span> <span class="n">ve</span><span class="p">,</span><span class="n">va</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">aux</span> <span class="o">=</span> <span class="n">v</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">cnt</span><span class="p">,</span><span class="n">m</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">aux</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">i</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">ve</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="n">aux</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">j</span><span class="p">;</span>
+            <span class="n">cnt</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="n">abs</span><span class="p">(</span><span class="n">j</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">diff</span> <span class="o">=</span> <span class="n">aux</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">aux</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">){</span>
+                <span class="kt">int</span> <span class="n">diff2</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="n">aux</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">diff2</span><span class="o">-</span><span class="n">diff</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+                    <span class="n">aux</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+                    <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">diff2</span><span class="o">-</span><span class="n">diff</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+                    <span class="n">aux</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">diff2</span><span class="o">-</span><span class="n">diff</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+                    <span class="n">aux</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                    <span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">ve</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">ve</span><span class="p">){</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">cnt</span><span class="p">);</span>
+                <span class="n">va</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">va</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">m</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">else</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-e">Problema E</h2>
+
+<p>Nesse problema nos são fornecidos dois inteiros <script type="math/tex">n</script> e <script type="math/tex">w</script>, representando respectivamente o número de paradas de ônibus e a capacidade do ônibus. Em seguida, são fornecidos <script type="math/tex">n</script> números, onde</p>
+
+<p><script type="math/tex">\forall a_i</script> <script type="math/tex">\epsilon</script> <script type="math/tex">a</script>; <script type="math/tex">a_i</script> corresponde à mudança registrada após a parada de ônibus</p>
+
+<p>Com esses dados, o problema nos pede para computarmos quantas capacidades diferentes o ônibus poderia ter no início da contagem.</p>
+
+<p>Limites do problema:</p>
+<ul>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">n</script> <script type="math/tex">\leq 1000</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">w</script> <script type="math/tex">\leq 10^9</script></li>
+  <li><script type="math/tex">-10^6 \leq</script> <script type="math/tex">a_i</script> <script type="math/tex">\leq 10^6</script></li>
+</ul>
+
+<h3 id="solução-4">Solução</h3>
+
+<p>Para esse problema, podemos encontrar uma solução relativamente simples, processando o vetor <script type="math/tex">a</script> da seguinte forma:</p>
+<ul>
+  <li>A cada parada de ônibus, verificamos se a soma de todas as paradas até agora é um máximo ou mínimo global de pessoas necessários para que os dados informados sejam válidos;</li>
+  <li>Caso o mínimo global seja menor que <script type="math/tex">-w</script> ou o máximo global seja maior que <script type="math/tex">w</script>, então a resposta será 0, pois é impossível alocar uma quantidade de pessoas no início da viagem que possa satisfazer as paradas registradas;</li>
+  <li>Caso seja possível encontrar uma resposta, o resultado será a capacidade total do ônibus <script type="math/tex">+ 1</script> (devemos considerar que pode ter ninguém no início da viagem), descontando a quantidade mínima e a quantidade máxima de pessoas que podem ter no início da viagem.</li>
+</ul>
+
+<h3 id="solução-em-c-4">Solução em C++</h3>
+
+<details>
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="cp">#define INF 0x3f3f3f3f
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">w</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">pre</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">x</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">mi</span> <span class="o">=</span> <span class="n">INF</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">ma</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">pre</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%lld"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+        <span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">x</span><span class="p">;</span>
+        <span class="n">ma</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">ma</span><span class="p">,</span><span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="n">mi</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">mi</span><span class="p">,</span><span class="n">pre</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">mi</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">w</span> <span class="o">||</span> <span class="n">ma</span> <span class="o">&gt;</span> <span class="n">w</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="kt">long</span> <span class="kt">long</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">w</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">mi</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">cnt</span> <span class="o">+=</span> <span class="n">mi</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">ma</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">cnt</span> <span class="o">-=</span> <span class="n">ma</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">max</span><span class="p">(</span><span class="n">cnt</span><span class="p">,(</span><span class="kt">long</span> <span class="kt">long</span><span class="p">)</span><span class="mi">0</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-f">Problema F</h2>
+
+<p>Nesse problema temos <script type="math/tex">n</script> programadores, onde cada programador <script type="math/tex">i</script> possui um nível de habilidade <script type="math/tex">r_i</script>. Um programador <script type="math/tex">a</script> pode ser mentor de um programador <script type="math/tex">b</script> se e somente se o nível de habilidade do programador <script type="math/tex">a</script> for estritamente maior que o nível de habilidade do programador <script type="math/tex">b</script> e os programadores <script type="math/tex">a</script> e <script type="math/tex">b</script> não estiverem brigados.</p>
+
+<p>Mais especificamente, o problema pede que, para cada programador, seja informado de quantos outros programadores ele pode ser mentor.</p>
+
+<p>Limites do problema:</p>
+<ul>
+  <li><script type="math/tex">2 \leq</script> <script type="math/tex">n</script> <script type="math/tex">\leq 2\cdot 10^5</script></li>
+  <li><script type="math/tex">0 \leq</script> <script type="math/tex">k</script> <script type="math/tex">\leq min(2\cdot 10^5, \frac{n\cdot (n-1)}{2})</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">r_i</script> <script type="math/tex">\leq 10^9</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">x,y</script> <script type="math/tex">\leq n, x \ne y</script>, onde é garantido que não existe dois pares <script type="math/tex">(x,y)</script> ou <script type="math/tex">(y,x)</script>.</li>
+</ul>
+
+<h3 id="solução-5">Solução</h3>
+
+<p>Uma possível solução para esse problema é dividir o problema em duas partes.</p>
+
+<p>Primeiro processamos a quantidade total de programadores que um determinado programador pode ser mentor</p>
+
+<p>Após realizarmos esse processamento, devemos processar as brigas internas e diminuir a quantidade de programadores que o programador de maior habilidade poderia ser mentor em 1. Caso ambos possuissem habilidades iguais, nada aconteceria.</p>
+
+<p>Porém, nesse problema é importante se atentar ao tempo de execução, já que determinadas implementações dessa lógica podem ser muito lentas para executar o código.</p>
+
+<h3 id="solução-em-c-5">Solução em C++</h3>
+
+<details>
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ii</span><span class="p">;</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">cnt</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">p</span><span class="p">[</span><span class="mi">200005</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">cntp</span><span class="p">[</span><span class="mi">200005</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">ii</span><span class="o">&gt;</span> <span class="n">prog</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">);</span>
+        <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+        <span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">aux</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">aux2</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">c</span> <span class="o">:</span> <span class="n">cnt</span><span class="p">){</span>
+        <span class="n">cnt</span><span class="p">[</span><span class="n">c</span><span class="p">.</span><span class="n">first</span><span class="p">]</span> <span class="o">=</span> <span class="n">aux</span> <span class="o">+</span> <span class="n">aux2</span><span class="p">;</span>
+        <span class="n">aux2</span> <span class="o">+=</span> <span class="n">aux</span><span class="p">;</span>
+        <span class="n">aux</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">y</span><span class="p">);</span>
+        <span class="n">x</span><span class="o">--</span><span class="p">;</span><span class="n">y</span><span class="o">--</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">[</span><span class="n">y</span><span class="p">])</span> <span class="n">cntp</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">y</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">[</span><span class="n">x</span><span class="p">])</span> <span class="n">cntp</span><span class="p">[</span><span class="n">y</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">cnt</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">-</span><span class="n">cntp</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">cnt</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">-</span><span class="n">cntp</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-g">Problema G</h2>
+
+<p>Esse problema nos pede para definir um cronograma que deverá ser seguido por uma estudante para que ela possa passar nos exames finais da faculdade. Existem <script type="math/tex">n</script> dias e <script type="math/tex">m</script> exames que precisam ser realizados, sendo os dias contados de <script type="math/tex">1</script> a <script type="math/tex">n</script>.</p>
+
+<p>Para cada exame, são informados três valores:</p>
+<ul>
+  <li><script type="math/tex">s_i</script>: o dia em que as questões do exame serão publicadas;</li>
+  <li><script type="math/tex">d_i</script>: o dia do exame;</li>
+  <li><script type="math/tex">c_i</script>: o número de dias que a estudante precisa para se preparar para o exame.</li>
+</ul>
+
+<p>Existem 3 atividades para a estudante realizar durante o dia:</p>
+<ul>
+  <li>Passar o dia fazendo nada (<script type="math/tex">0</script>)</li>
+  <li>Passar o dia estudando para um exame (<script type="math/tex">i</script>)</li>
+  <li>Passar o dia fazendo um exame (<script type="math/tex">m+1</script>)</li>
+</ul>
+
+<p>O problema consiste em encontrar um cronograma para a estudante passar em todos os exames ou reportar que é impossível passar em todos os exames.</p>
+
+<p>Limites do problema:</p>
+<ul>
+  <li><script type="math/tex">2 \leq</script> <script type="math/tex">n</script> <script type="math/tex">\leq 100</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">m</script> <script type="math/tex">\leq n</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">s_i</script> <script type="math/tex">\leq d_i+1 \leq n+1</script></li>
+  <li><script type="math/tex">1 \leq</script> <script type="math/tex">c_i</script> <script type="math/tex">\leq n</script></li>
+</ul>
+
+<h3 id="solução-6">Solução</h3>
+
+<p>Nesse problema podemos tratar os dados da seguinte forma:</p>
+<ul>
+  <li>Sempre vale a pena estudar pro exame que ocorrerá antes, independente da quantidade de dias necessários;</li>
+  <li>Caso seguindo essa estratégia, existir um exame que não pode ser estudado a tempo até o dia do exame, logo é impossível montar o cronograma;</li>
+  <li>Caso não exista exames para estudar, preenchemos o cronograma com dias livres.</li>
+</ul>
+
+<h3 id="solução-em-c-6">Solução em C++</h3>
+<details>
+
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">typedef</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ii</span><span class="p">;</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span><span class="kt">int</span> <span class="o">&gt;</span> <span class="n">p</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">es</span><span class="p">[</span><span class="mi">105</span><span class="p">];</span>
+<span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">e</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span> <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">s</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">c</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">exams</span><span class="p">[</span><span class="mi">105</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span> <span class="o">&gt;&gt;</span> <span class="n">d</span> <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">p</span><span class="p">[{</span><span class="n">s</span><span class="p">,</span><span class="n">i</span><span class="p">}]</span> <span class="o">=</span> <span class="n">d</span><span class="p">;</span>
+        <span class="n">es</span><span class="p">[</span><span class="n">s</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+        <span class="n">exams</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+        <span class="n">e</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">schedule</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">exam</span><span class="p">;</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">pexam</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+                <span class="n">exam</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">p</span><span class="p">[{</span><span class="n">i</span><span class="p">,</span><span class="n">es</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]}]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pexam</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">pexam</span><span class="p">.</span><span class="n">top</span><span class="p">()</span> <span class="o">==</span> <span class="n">i</span><span class="p">){</span>
+            <span class="n">schedule</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+            <span class="n">pexam</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">exam</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">){</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">exam</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">d</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+                <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">exams</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+            <span class="n">schedule</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">e</span><span class="p">[</span><span class="n">d</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">exams</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">pexam</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+                <span class="n">exam</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">schedule</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">schedule</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">schedule</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+    </div>
+    
+
+  </div>
+</article>
+
+    </div>
+  </main>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: [
+      "MathMenu.js",
+      "MathZoom.js",
+      "AssistiveMML.js",
+      "a11y/accessibility-menu.js"
+    ],
+    jax: ["input/TeX", "output/CommonHTML"],
+    TeX: {
+      extensions: [
+        "AMSmath.js",
+        "AMSsymbols.js",
+        "noErrors.js",
+        "noUndefined.js",
+      ]
+    }
+  });
+  MathJax.Hub.Register.StartupHook("TeX Jax Ready",function () {
+    var TEX = MathJax.InputJax.TeX;
+    var COLS = function (W) {
+      var WW = [];
+      for (var i = 0, m = W.length; i < m; i++)
+        {WW[i] = TEX.Parse.prototype.Em(W[i])}
+      return WW.join(" ");
+    };
+    TEX.Definitions.Add({
+      environment: {
+        psmallmatrix: ['Array',null,'(',')','c',COLS([1/3]),".2em",'S',1],
+      }
+    });
+  });
+</script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js">
+</script>
+</body>
+</html>

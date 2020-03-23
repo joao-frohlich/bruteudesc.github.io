@@ -71,7 +71,7 @@
 Me chamo João Vitor Fröhlich <a href="https://codeforces.com/profile/joaovitor01" style="color: green">(joaovitor01)</a> e estarei realizando aqui um upsolving das questões que caíram na maratona regional de 2019.<br />
 Vou estar disponibilizando também um código que solucione a questão, lembrando que o código não corresponde à melhor solução, além de que é no mínimo interessante a produção do próprio código, ou seja, olhe o código somente se você não foi capaz de
 programar a própria solução (ou pra comparar também).<br />
-Cada problema terá um link para o problema na plataforma Uri Online Judge
+Cada problema terá um link para o problema na plataforma Uri Online Judge<br />
 Dito isso, aproveite a leitura</p>
 
 <h1 id="aquecimento">Aquecimento</h1>
@@ -99,7 +99,7 @@ Sabemos que</p>
 
 <script type="math/tex; mode=display">\frac{N}{c!} = 0 + 0 + 1</script>
 
-<p>Isso nos mostra que se <script type="math/tex">c!</script> pertencer a soma, <script type="math/tex">N/c! == 1</script>.</p>
+<p>Isso nos mostra que se <script type="math/tex">c!</script> pertencer a soma, <script type="math/tex">\frac{N}{c!} == 1</script>.</p>
 
 <p>Então para minimizar <script type="math/tex">k</script>, precisamos adotar uma estratégia <em>greedy</em> começando por pegar os maiores valores até zerar <script type="math/tex">N</script>.</p>
 
@@ -110,13 +110,14 @@ Com a finalidade de otimizar a consulta do fatorial, utilizamos a técnica de <e
 <details>
 
   <div class="language-python highlighter-rouge">
-    <pre class="highlight"><code><span class="k">def</span> <span class="nf">fats</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <div class="highlight">
+      <pre class="highlight"><code><span class="k">def</span> <span class="nf">fats</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">ans</span> <span class="o">=</span> <span class="mi">1</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">ans</span> <span class="o">*=</span> <span class="n">i</span>
     <span class="k">return</span> <span class="n">ans</span>
 
-<span class="n">fat</span> <span class="o">=</span> <span class="p">[</span><span class="n">fats</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span> 
+<span class="n">fat</span> <span class="o">=</span> <span class="p">[</span><span class="n">fats</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)]</span>
 
 <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span>
@@ -127,6 +128,7 @@ Com a finalidade de otimizar a consulta do fatorial, utilizamos a técnica de <e
 
 <span class="k">print</span><span class="p">(</span><span class="n">ans</span><span class="p">)</span>
 </code></pre>
+    </div>
   </div>
 </details>
 
@@ -144,12 +146,14 @@ Com a finalidade de otimizar a consulta do fatorial, utilizamos a técnica de <e
 <details>
 
   <div class="language-python highlighter-rouge">
-    <pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
+    <div class="highlight">
+      <pre class="highlight"><code><span class="n">A</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 <span class="n">M</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span>
 <span class="n">B</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">M</span> <span class="o">-</span> <span class="n">A</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 </code></pre>
+    </div>
   </div>
 </details>
 
@@ -193,7 +197,8 @@ a passagem pela sala, ou retornamos “S” caso contrário</p>
 <details>
 
   <div class="language-cpp highlighter-rouge">
-    <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="k">struct</span> <span class="n">point</span><span class="p">{</span>
@@ -285,6 +290,7 @@ a passagem pela sala, ou retornamos “S” caso contrário</p>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
+    </div>
   </div>
 </details>
 
@@ -301,7 +307,8 @@ a passagem pela sala, ou retornamos “S” caso contrário</p>
 <details>
 
   <div class="language-cpp highlighter-rouge">
-    <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
@@ -320,6 +327,7 @@ a passagem pela sala, ou retornamos “S” caso contrário</p>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
+    </div>
   </div>
 
 </details>
@@ -340,7 +348,8 @@ Após a entrada de dados, precisamos encontrar a profundidade de todos os nós. 
 <details>
 
   <div class="language-cpp highlighter-rouge">
-    <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">adjList</span><span class="p">;</span>
@@ -400,6 +409,7 @@ Após a entrada de dados, precisamos encontrar a profundidade de todos os nós. 
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
+    </div>
   </div>
 
 </details>
@@ -407,18 +417,20 @@ Após a entrada de dados, precisamos encontrar a profundidade de todos os nós. 
 <h2 id="problema-h">Problema H</h2>
 <p><a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/2968">Hora da Corrida</a></p>
 
-<p>Nesse problema nos é fornecido o comprimento de uma volta e o número de voltas que serão percorridas, e precisamos fornecer a distância de cada 10% do trajeto até 90%.</p>
+<p>Nesse problema nos é fornecido o comprimento de uma volta (N) e o número de voltas (V) que serão percorridas, e precisamos fornecer a distância de cada 10% do trajeto até 90%.</p>
 
-<p>A primeira coisa que precisamos fazer é multiplicar o número de voltas com o comprimento de uma volta para encontrarmos a distância total do percurso.</p>
+<p>A primeira coisa que precisamos fazer é encontrarmos a distância total do percurso <script type="math/tex">dt = N*V</script></p>
 
-<p>Após isso, basta fazer uma iteração de 1 a 9, imprimindo o resultado da operação<br />
-dt/(0.1 * i), onde dt é a distância total e i é a iteração atual</p>
+<p>Após isso, basta fazer uma iteração de 1 a 9, imprimindo o resultado da operação</p>
+
+<script type="math/tex; mode=display">\sum_{i=1}^{9} \frac{dt}{0.1*i}</script>
 
 <h3 id="solução-em-c-3">Solução em C++</h3>
 <details>
 
   <div class="language-cpp highlighter-rouge">
-    <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
 </span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
 
 <span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
@@ -433,6 +445,202 @@ dt/(0.1 * i), onde dt é a distância total e i é a iteração atual</p>
     <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-j">Problema J</h2>
+<p><a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/2971">Jogo do Baralho</a></p>
+
+<p>O problema consiste basicamente em simular o jogo até chegar em uma condição de vitória,
+e como o problema possui constantes pequenas, somos capazes de executar a simulação
+em pouco tempo.</p>
+
+<p>Para facilitar o código transformamos as cartas em números de 0 a 12, inserindo a quantidade
+de cartas que aparecem para cada jogador em uma matriz de dimensões Nx13.</p>
+
+<p>Indiquei também a posição e o status do coringa em um vetor de N posições.</p>
+
+<p>Deve-se atentar ao fato de que pode-se ter um estado vencedor antes de começar a simulação.</p>
+
+<p>No final apenas imprimimos o valor correspondente ao jogador vencedor.</p>
+
+<h3 id="solução-em-c-4">Solução em C++</h3>
+<details>
+
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="cp">#define NT 0
+#define MANTER 1
+#define PASSAR 2
+</span>
+<span class="kt">int</span> <span class="n">transformaChar</span><span class="p">(</span><span class="kt">char</span> <span class="n">c</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'A'</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'D'</span><span class="p">)</span> <span class="k">return</span> <span class="mi">9</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'Q'</span><span class="p">)</span> <span class="k">return</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'J'</span><span class="p">)</span> <span class="k">return</span> <span class="mi">11</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'K'</span><span class="p">)</span> <span class="k">return</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="k">else</span> <span class="k">return</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">c</span><span class="p">)</span><span class="o">-</span><span class="mi">49</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="n">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">,</span> <span class="n">vencedor</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">jogo</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">k</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">coringa</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">jogos</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="mi">13</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">13</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">jogos</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">jogo</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">coringa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">MANTER</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">coringa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">NT</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">){</span>
+            <span class="n">jogos</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">transformaChar</span><span class="p">(</span><span class="n">jogo</span><span class="p">[</span><span class="n">j</span><span class="p">])]</span><span class="o">++</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">jogos</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">transformaChar</span><span class="p">(</span><span class="n">jogo</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="n">vencedor</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">coringa</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">NT</span><span class="p">){</span>
+            <span class="n">vencedor</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kt">int</span> <span class="n">jogador</span> <span class="o">=</span> <span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">proximoJogador</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">passou</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">vencedor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="n">passou</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">jogador</span> <span class="o">!=</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">){</span>
+            <span class="n">proximoJogador</span> <span class="o">=</span> <span class="n">jogador</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">proximoJogador</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">coringa</span><span class="p">[</span><span class="n">jogador</span><span class="p">]</span> <span class="o">==</span> <span class="n">PASSAR</span><span class="p">){</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">13</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="n">vencedor</span> <span class="o">=</span> <span class="n">jogador</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">coringa</span><span class="p">[</span><span class="n">proximoJogador</span><span class="p">]</span> <span class="o">=</span> <span class="n">MANTER</span><span class="p">;</span>
+            <span class="n">coringa</span><span class="p">[</span><span class="n">jogador</span><span class="p">]</span> <span class="o">=</span> <span class="n">NT</span><span class="p">;</span>
+            <span class="n">jogador</span> <span class="o">=</span> <span class="n">proximoJogador</span><span class="p">;</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">coringa</span><span class="p">[</span><span class="n">jogador</span><span class="p">]</span> <span class="o">==</span> <span class="n">MANTER</span><span class="p">){</span>
+            <span class="n">coringa</span><span class="p">[</span><span class="n">jogador</span><span class="p">]</span> <span class="o">=</span> <span class="n">PASSAR</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">13</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">passou</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+                <span class="n">jogos</span><span class="p">[</span><span class="n">proximoJogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+                <span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+                <span class="n">passou</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">){</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">passou</span><span class="p">)</span> <span class="k">continue</span><span class="p">;</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+                <span class="k">else</span> <span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">4</span><span class="p">){</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">coringa</span><span class="p">[</span><span class="n">jogador</span><span class="p">]</span> <span class="o">==</span> <span class="n">NT</span><span class="p">){</span>
+                    <span class="n">vencedor</span> <span class="o">=</span> <span class="n">jogador</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">jogos</span><span class="p">[</span><span class="n">proximoJogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+                    <span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">passou</span><span class="p">){</span>
+            <span class="n">jogos</span><span class="p">[</span><span class="n">proximoJogador</span><span class="p">][</span><span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">jogos</span><span class="p">[</span><span class="n">jogador</span><span class="p">][</span><span class="n">cartasDuplas</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">jogador</span> <span class="o">=</span> <span class="n">proximoJogador</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vencedor</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
+  </div>
+</details>
+
+<h2 id="problema-m">Problema M</h2>
+<p><a href="https://www.urionlinejudge.com.br/judge/pt/problems/view/2973">Maratona Brasileira de Comedores de Pipoca</a></p>
+
+<p>O problema consiste em encontrar um número [1,C] de subsequencias, onde a subsequencia que possua a maior soma tenha a soma de valor minimo</p>
+
+<p>São fornecidos os dados de quantidade elementos da sequencia principal <script type="math/tex">N</script>, a quantidade máxima de subsequencias <script type="math/tex">C</script> e quantas pipocas serão consumidas por segundo <script type="math/tex">T</script>. Também serão fornecidos <script type="math/tex">N</script> valores, onde cada valor <script type="math/tex">p_{i}</script> representa a quantidade de pipocas por elemento</p>
+
+<p>Para resolvermos esse problema, iremos inicialmente testar um valor <script type="math/tex">x = 2^{\log_2 \frac{M}{T}}</script>, onde <script type="math/tex">M</script> representa o elemento com maior quantidade de pipocas. Esse valor <script type="math/tex">x</script> representa o valor máximo da soma de uma subsequência. Note que <script type="math/tex">x = 2^{a}</script>, <script type="math/tex">a \in \mathbb{N}</script>, com isso denotaremos uma variável <script type="math/tex">aux = 2^{a-1}</script></p>
+
+<p>Após obtermos <script type="math/tex">x</script>, encontraremos a quantidade de subsequências necessárias para obedecer ao valor <script type="math/tex">x</script>, que denotaremos <script type="math/tex">contador</script>.</p>
+
+<p>Realizaremos agora uma implementação na forma de uma busca binária:</p>
+<ul>
+  <li>Caso <script type="math/tex">contador \leq C</script>, calcularemos <script type="math/tex">x = \frac{x-a}{2}</script> e armazenamos <script type="math/tex">x</script> como resposta temporaria <script type="math/tex">R</script>.</li>
+  <li>Caso contrário, utilizaremos duas abordagens diferentes:
+    <ul>
+      <li>Caso ainda não tenha acontecido <script type="math/tex">contador \leq C</script>, <script type="math/tex">aux = x</script> e <script type="math/tex">x = x*2</script></li>
+      <li>Caso contrario, denotaremos <script type="math/tex">aux_2 = \frac{x-a}{2}</script> e atribuiremos <script type="math/tex">aux = x</script> e <script type="math/tex">x = x+aux_2</script></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Quando encerrarmos a busca binária basta imprimir o valor de <script type="math/tex">R</script></p>
+
+<h3 id="solução-em-c-5">Solução em C++</h3>
+<details>
+
+  <div class="language-cpp highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">,</span><span class="n">m</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">mi</span><span class="p">,</span><span class="n">aux</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ret</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">v</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">c</span> <span class="o">&gt;&gt;</span> <span class="n">t</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">s</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,(</span><span class="kt">int</span><span class="p">)</span> <span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">t</span><span class="p">)));</span>
+    <span class="n">mi</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="n">aux</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="kt">int</span> <span class="n">sa</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">int</span> <span class="n">cont</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">ceil</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mf">1.0</span><span class="o">/</span><span class="n">t</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">x</span> <span class="o">||</span> <span class="n">cont</span> <span class="o">==</span> <span class="n">c</span><span class="p">){</span>
+                <span class="n">cont</span> <span class="o">=</span> <span class="n">c</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">ceil</span><span class="p">((</span><span class="kt">double</span><span class="p">)(</span><span class="n">sa</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="mf">1.0</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">x</span><span class="p">){</span>
+                <span class="n">sa</span> <span class="o">+=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">cont</span><span class="o">++</span><span class="p">;</span>
+                <span class="n">sa</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">cont</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">aux</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">mi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cont</span> <span class="o">&lt;=</span> <span class="n">c</span><span class="p">){</span>
+            <span class="n">ret</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="n">x</span> <span class="o">-=</span> <span class="n">aux</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">v</span><span class="p">){</span>
+            <span class="n">mi</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="n">x</span> <span class="o">+=</span> <span class="n">aux</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">aux</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="n">mi</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ret</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+    </div>
   </div>
 </details>
 
